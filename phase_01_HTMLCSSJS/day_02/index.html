@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color: red;
+        }
+        h2{
+            color: blue;
+            text-align: center;
+        }
+        button{
+            background-color: green;
+            color: white;
+            padding:  20px;
+            
+            
+        }
+    </style>
+        
+</head>
+<body>
+    <h1>this is index page</h1>
+    <h2 ID="welcome">welcome to chitkara</h2>
+    <button id="submit">Exit</button>
+
+    <script>
+        var greet = document.getElementById("welcome");
+        var btn = document.getElementById("submit");
+
+        btn.addEventListener("click", handleclick);
+
+        function handleclick() {
+            greet.innerHTML = "welcome";
+            greet.style.color = "red";
+        }
+    </script>
+</body>
+</html>
