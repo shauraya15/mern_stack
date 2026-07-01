@@ -7,24 +7,29 @@
     <link rel="stylesheet" href="moviesdb.css">
 </head>
 <body>
-    <div id = "container">
-    <div id = "form">
-        <div>
-           <label for="">Movie image url</label>
-              <input type="text" placeholder="Enter image url">
-        </div>
-        <div>
-            <label for="">MovieTitle</label>
-            <input type="text" name="" placeholder="Enter title">
-        </div>
-        <div>
-            <label for="">Movie Rating</label>
-            <input type="text" placeholder="Enter rating">
-        </div>
-        <div>
-            <button>Submit</button>
-        </div>
+    <div id="container">
+        <form id="form">
+            <div>
+                <label for="movie">Movie image url</label>
+                <input id="movie" type="text" placeholder="Enter image url">
+            </div>
+            <div>
+                <label for="title">Movie title</label>
+                <input id="title" type="text" placeholder="Enter title">
+            </div>
+            <div>
+                <label for="rating">Movie rating</label>
+                <input id="rating" type="text" placeholder="Enter rating">
+            </div>
+            <div>
+                <button id="submit" type="submit">Submit</button>
+            </div>
+        </form>
+
+        <div id="moviecards"></div>
     </div>
-    </div>
+
+    <script src="moviesdb.js"></script>
 </body>
+</html>
 </html>
