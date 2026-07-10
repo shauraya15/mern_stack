@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thumbs Counter Card</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        <!-- body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            
+                  } -->
+
+        .card {
+            width: 280px;
+            padding: 16px;
+            
+            border: 1px solid #cfd8e3;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .name {
+            margin: 14px 0;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .icon-box {
+            
+            width: 42px;
+            height: 42px;
+            display: grid;
+           
+            border: 1px solid #9fb2c7;
+            border-radius: 6px;
+            
+            background: #f8fbff;
+            
+        }
+
+        .count {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="https://media.licdn.com/dms/image/v2/D5612AQF6kbX_ofOq4w/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1698911846476?e=2147483647&v=beta&t=_Ru9tskqPMEywzdIlgudIStx2QjNLCpNeurfi45Dc54" alt="">
+
+        <div class="name">King Khan</div>
+
+        <div class="row">
+            <button class="icon-box" id="likeBtn" type="button">👍</button>
+            <div class="count" id="likeCount">Count: 8</div>
+        </div>
+
+        <div class="row">
+            <button class="icon-box" id="dislikeBtn" type="button" >👎</button>
+            <div class="count" id="dislikeCount">Count: 0</div>
+        </div>
+    </div>
+
+    <script src="task.js"></script>
+</body>
+</html>
