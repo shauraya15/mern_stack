@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <style>
+        /* Global & Layout Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d8e5f5; /* Light blue/gray background matching the image */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        /* Search Section */
+        .search-container {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .search-container input {
+            flex: 1;
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-container button {
+            background-color: #4caf50; /* Green search button */
+            color: white;
+            border: none;
+            padding: 6px 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .search-container button:hover {
+            background-color: #43a047;
+        }
+
+        /* Recipe Grid Area */
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Recipe Card Styles */
+        .recipe-card {
+            background-color: #f1f6fc; /* Slightly lighter inner card background */
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .recipe-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            background-color: #ddd; /* Fallback placeholder color */
+        }
+
+        .recipe-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #0366d6; /* Blue text color for links/titles */
+            margin-bottom: 8px;
+            min-height: 34px; /* Keeps cards aligned if text wraps */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .recipe-time {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* No Results Message */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-top: 20px;
+            display: none;
+        }
+        .recipe-card button {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Recipe Finder</h1>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Type a recipe...">
+        <button id="searchBtn">Search</button>
+    </div>
+
+    <div class="recipe-grid" id="recipeGrid">
+        
+        <div class="recipe-card" data-name="classic margherita pizza">
+            <img src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=200" alt="Classic Margherita Pizza">
+            <div class="recipe-title">Classic Margherita Pizza</div>
+            <div class="recipe-time">Time: 20 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="recipe-card" data-name="vegetarian stir-fry">
+            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=200" alt="Vegetarian Stir-Fry">
+            <div class="recipe-title">Vegetarian Stir-Fry</div>
+            <div class="recipe-time">Time: 15 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="recipe-card" data-name="chocolate chip cookies">
+            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=200" alt="Chocolate Chip Cookies">
+            <div class="recipe-title">Chocolate Chip Cookies</div>
+            <div class="recipe-time">Time: 15 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="recipe-card" data-name="chicken alfredo pasta">
+            <img src="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=200" alt="Chicken Alfredo Pasta">
+            <div class="recipe-title">Chicken Alfredo Pasta</div>
+            <div class="recipe-time">Time: 15 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="recipe-card" data-name="mango salsa chicken">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200" alt="Mango Salsa Chicken">
+            <div class="recipe-title">Mango Salsa Chicken</div>
+            <div class="recipe-time">Time: 15 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="recipe-card" data-name="quinoa salad with avocado">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200" alt="Quinoa Salad with Avocado">
+            <div class="recipe-title">Quinoa Salad with Avocado</div>
+            <div class="recipe-time">Time: 20 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="recipe-card" data-name="tomato basil bruschetta">
+            <img src="https://images.unsplash.com/photo-1572656631137-7935297eff55?w=200" alt="Tomato Basil Bruschetta">
+            <div class="recipe-title">Tomato Basil Bruschetta</div>
+            <div class="recipe-time">Time: 15 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="recipe-card" data-name="beef and broccoli stir fry">
+            <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=200" alt="Beef and Broccoli Stir Fry">
+            <div class="recipe-title">Beef and Broccoli Stir Fry</div>
+            <div class="recipe-time">Time: 20 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="recipe-card" data-name="caprese salad">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_7qvg1SevwtuSrezyu1v_6gjyS67troqF75h0Af_e8w&s=10" alt="Caprese Salad">
+            <div class="recipe-title">Caprese Salad</div>
+            <div class="recipe-time">Time: 10 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="recipe-card" data-name="shrimp scampi pasta">
+            <img src="https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?w=200" alt="Shrimp Scampi Pasta">
+            <div class="recipe-title">Shrimp Scampi Pasta</div>
+            <div class="recipe-time">Time: 20 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="recipe-card" data-name="chicken biryani">
+            <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=200" alt="Chicken Biryani">
+            <div class="recipe-title">Chicken Biryani</div>
+            <div class="recipe-time">Time: 40 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="recipe-card" data-name="chicken karahi">
+            <img src="https://images.unsplash.com/photo-1603496987351-f84a3ba5ec85?w=200" alt="Chicken Karahi">
+            <div class="recipe-title">Chicken Karahi</div>
+            <div class="recipe-time">Time: 35 mins</div>
+            <button onclick="handledelete(this.parentElement)">Delete</button>
+        </div>
+
+        <div class="no-results" id="noResults">No recipes found matching your search.</div>
+    </div>
+
+    <script>
+       
+const cards = document.querySelectorAll(".recipe-card");
+function filterRecipes() {
+    
+    let q = searchInput.value.toLowerCase();
+    let foundAny = false;
+
+    
+    for (let i = 0; i < cards.length; i++) {
+        let card = cards[i];
+        
+        
+        let recipeName = card.dataset.name.toLowerCase();
+
+        
+        if (recipeName.includes(q)) {
+            card.style.display = "";    
+            foundAny = true;            
+        } else {
+            card.style.display = "none"; 
+        }
+    }
+    if (foundAny === false) {
+        noResults.style.display = "block"; 
+    } else {
+        noResults.style.display = "none";  
+    }
+}
+
+
+searchInput.oninput = filterRecipes;
+searchBtn.onclick = filterRecipes;
+
+
+        function handledelete(div) {
+            div.remove();
+            filterRecipes();
+        }
+
+    </script>
+
+    
+</body>
+</html>
