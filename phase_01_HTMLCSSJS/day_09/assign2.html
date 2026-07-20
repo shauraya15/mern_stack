@@ -1,0 +1,34 @@
+<!-- even or odd -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ui input button heading
+     if number is even then even number in blue color else odd number in orange -->
+     <input type="text" id="numberInput" placeholder="Enter a number">
+        <button onclick="checkEvenOdd()">Check</button>
+        <p id="result"></p>
+
+    <script>
+        function checkEvenOdd() {
+            const number = parseInt(document.getElementById('numberInput').value);
+            const result = document.getElementById('result');
+            
+            if (isNaN(number)) {
+                result.textContent = "Please enter a valid number";
+                result.style.color = "black";
+            } else if (number % 2 === 0) {
+                result.textContent = "Even Number";
+                result.style.color = "blue";
+            } else {
+                result.textContent = "Odd Number";
+                result.style.color = "orange";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Checker</title>
+</head>
+<body>
+    <label for="age">Enter your age:</label>
+    <input type="number" id="age">
+    <button onclick="checkAge()">Check Eligibility</button>
+    
+    <p id="result"></p>
+
+    <script>
+    function checkAge() {
+        const age = parseInt(document.getElementById('age').value);
+        const result = document.getElementById('result');
+        
+        if (age >= 18) {
+            result.textContent = "You can vote";
+            result.style.color = "green";
+        } else {
+            result.textContent = "You are not eligible";
+            result.style.color = "red";
+        }
+    }
+    </script>
+</body>
+</html>
