@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container {
+        
+        height: 200px;
+        width: 100%;
+    }
+</style>
+<body>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+
+<script>
+    let arr= [
+    "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/3b76bfb9-031c-4ae8-bf4b-2906f035cf10.png",
+    "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/b5889fbc-a302-4603-bd80-32cde0dc7890.png",
+    "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=360/da/cms-assets/cms/product/dac2a702-c38e-481f-b9b1-8a0accc40e1f.png",
+    
+    
+    ]
+    let container = document.getElementById("container");
+    let index=0;
+    let movies = document.createElement("img");
+    setInterval(() => {
+        if(index==arr.length){
+            index=0;
+        }
+        movies.setAttribute("src", arr[index])
+        container.appendChild(movies);
+        index++;
+    }, 1000);
+
+</script>
