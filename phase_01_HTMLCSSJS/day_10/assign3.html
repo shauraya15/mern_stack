@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- login system
+     ui:
+     username
+     password
+     login button
+            credentials:
+            admin
+            123345
+            output:
+            login successful
+            else 
+            invalid credentials-->
+
+    <h2>Login System</h2>
+    <input type="text" id="username" placeholder="Enter Username">
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="login()">Login</button>
+    <p id="result"></p>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const result = document.getElementById('result');
+
+            if (username === 'admin' && password === '123345') {
+                result.textContent = "Login Successful";
+                result.style.color = "green";
+            } else {
+                result.textContent = "Invalid Credentials";
+                result.style.color = "red";
+            }
+        }  
+    </script>
+</body>
+</html>

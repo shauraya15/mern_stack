@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks Calculator</title>
+</head>
+<body>
+
+    <h2>Marks Calculator</h2>
+
+    <input type="number" id="marks" placeholder="Enter Marks">
+    <button onclick="checkGrade()">Check Grade</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkGrade() {
+            let marks = parseInt(document.getElementById("marks").value);
+            let result = document.getElementById("result");
+
+            if ( marks > 90) {
+                result.innerHTML = "A+";
+                result.style.color = "green";
+            } else if (marks < 90 && marks >= 75) {
+                result.innerHTML = "A";
+                result.style.color = "blue";
+            } else if (marks  < 75 && marks >= 60) {
+                result.innerHTML = "B";
+                result.style.color = "orange";
+            } else if (marks < 60 && marks >= 40) {
+                result.innerHTML = "C";
+                result.style.color = "red";
+            } else {
+                result.innerHTML = "Fail";
+                result.style.color = "black";
+            }
+        }
+    </script>
+
+</body>
+</html>
+                
+    
