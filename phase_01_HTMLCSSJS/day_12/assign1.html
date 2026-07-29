@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Card</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        form{
+            margin-top: 20px;
+        }
+
+        input{
+            width: 250px;
+            padding: 8px;
+            margin: 8px;
+        }
+
+        button{
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        section{
+            width: 300px;
+            margin: 20px auto;
+            padding: 15px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: white;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Student Registration Form</h2>
+
+<form id="studentForm">
+
+    <input type="text" id="name" placeholder="Enter Name" required><br>
+
+    <input type="number" id="age" placeholder="Enter Age" required><br>
+
+    <input type="text" id="course" placeholder="Enter Course" required><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<section id="card"></section>
+
+<script>
+
+document.getElementById("studentForm").addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    let student = {
+        name: document.getElementById("name").value,
+        age: document.getElementById("age").value,
+        course: document.getElementById("course").value
+    };
+
+    let card = document.getElementById("card");
+
+    card.innerHTML =
+    "<h3>Student Profile</h3>" +
+    "<p><b>Name:</b> " + student.name + "</p>" +
+    "<p><b>Age:</b> " + student.age + "</p>" +
+    "<p><b>Course:</b> " + student.course + "</p>";
+
+    card.style.display = "block";
+
+});
+
+</script>
+
+</body>
+</html>
